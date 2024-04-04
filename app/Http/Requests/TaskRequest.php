@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class TaskRequest extends FormRequest
@@ -23,17 +24,25 @@ class TaskRequest extends FormRequest
      */
     public function rules()
     {
+        // validate: so important in validate and in validate edit
+        $rule_task_unique = Rule::unique('tasks','task');
+        if ($this->method() !== 'POST') {
+            $rule_task_unique->ignore($this->route()->parameter('id'));
+        }
+
         return [
+            // 'user' => ['required', 'unique:tasks'],
+            'user' => ['required', $rule_task_unique],
             'task' => ['required'],
             'label' => ['required'],
-            'user' => ['required'],
         ];
     }
 
     public function messages()
     {
         return [
-            'required' => 'isian: attribut harus diisi',
+            'required' => 'isian :attribute harus diisi',
+            'user.required' => 'Nama Pengguna harus diisi',
         ];
     }
 }

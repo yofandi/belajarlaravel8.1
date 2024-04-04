@@ -18,8 +18,8 @@
             <input type="hidden" class="form-control" id="id" name="id" value="{{ $data->id }}">
             <div class="mb-3">
                 <label for="user" class="form-label">User</label>
-                <input type="text" class="form-control" id="user" name="user" value="{{ $data->user }}">
-                @error('user')    
+                <input type="text" class="form-control" id="user" name="user" value="{{ old('user', $data->user) }}">
+                @error('user')
                 <span class="text-danger">
                     {{$message}}
                 </span>
@@ -27,8 +27,8 @@
             </div>
             <div class="mb-3">
                 <label for="task" class="form-label">Task</label>
-                <input type="text" class="form-control" id="task" name="task" value="{{ $data->task }}">
-                @error('task')    
+                <input type="text" class="form-control" id="task" name="task" value="{{ old('task', $data->task) }}">
+                @error('task')
                 <span class="text-danger">
                     {{$message}}
                 </span>
@@ -36,8 +36,8 @@
             </div>
             <div class="mb-3">
                 <label for="label" class="form-label">Label</label>
-                <input type="text" class="form-control" id="label" name="label" value="{{ $data->label }}">
-                @error('label')    
+                <input type="text" class="form-control" id="label" name="label" value="{{ old('label', $data->label) }}">
+                @error('label')
                 <span class="text-danger">
                     {{$message}}
                 </span>
