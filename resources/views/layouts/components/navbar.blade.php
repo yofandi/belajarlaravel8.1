@@ -17,6 +17,19 @@
                     <a class="nav-link" href="#">Contact</a>
                 </li>
             </ul>
+            <div class="text-end">
+                @guest
+                {{-- if you dont sign in or not have account in this web --}}
+                <a href="{{ route('register') }}" class="btn btn-primary mx-2">Sign Up</a>
+                <a href="{{ route('login') }}" class="btn btn-success">Sign In</a>
+                @else
+                {{-- logout button :: if you have sign in --}}
+                <a href="{{ route('logout') }}" class="btn btn-danger" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ Auth::user()->name }}</a>
+                <form action="{{ route('logout') }}" method="POST" id="logout-form">
+                @csrf
+                </form>
+                @endguest
+            </div>
         </div>
     </div>
 </nav>
