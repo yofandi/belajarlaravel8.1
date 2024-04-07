@@ -34,7 +34,7 @@ Route::get('/hello', function () {
 });
 
 
-Route::get('/tasks', [TaskController::class, 'index'])->name('tasks.index');
+Route::get('/tasks', [TaskController::class, 'index'])->name('tasks.index')->middleware('IsAdmin');
 
 Route::get('/tasks/create', [TaskController::class, 'create'])->name('tasks.create');
 
