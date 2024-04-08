@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\DB;
 
 class TaskController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
     private $takslist = [
         'first' => 'sleep',
         'second' => 'eat',
@@ -59,7 +63,7 @@ class TaskController extends Controller
         //     'task' => $request->task,
         //     'label' => $request->label,
         // ];
-        
+
 
         $flight = Task::find($request->id);
 

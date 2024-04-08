@@ -34,7 +34,9 @@ Route::get('/hello', function () {
 });
 
 
-Route::get('/tasks', [TaskController::class, 'index'])->name('tasks.index')->middleware('IsAdmin');
+// Route::get('/tasks', [TaskController::class, 'index'])->name('tasks.index')->middleware('IsAdmin'); contoh menggunakan middleware dengan role admin
+// Route::get('/tasks', [TaskController::class, 'index'])->name('tasks.index')->middleware('auth'); ontoh menggunakan middleware authenticate
+Route::get('/tasks', [TaskController::class, 'index'])->name('tasks.index');
 
 Route::get('/tasks/create', [TaskController::class, 'create'])->name('tasks.create');
 
